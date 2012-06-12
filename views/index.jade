@@ -1,0 +1,18 @@
+form.form-horizontal(method='post', enctype='multipart/form-data')
+  div.control-group
+    label.control-label(for='file-field') Torrent file
+    div.controls
+      input#file-field(type='file', name='torrent-file')
+  div.form-actions
+    button.btn.btn-primary(type='submit') Upload
+  h1 files
+  - if (finished && finished.length > 0)
+    h2 finished
+    each file in finished
+      div.file
+      - if(file.isFile)
+           #{file.name} 
+           a(href='files/' + file.webpath) télécharger
+           div.size #{file.stats.size / 1024 / 1024}M
+       -else
+           a(href='f/' + file.webpath) #{file.name}   

@@ -1,0 +1,20 @@
+h2 Hello 
+  u= user.pseudo
+| Password change
+
+form.form-horizontal(method='post')
+  div.control-group
+    label.control-label(for='old-password') Old password
+    div.controls
+      input#old-password(type='password', name='old-password')
+  div.control-group
+    label.control-label(for='new-password') New password
+    div.controls
+      input#new-password(type='password', name='new-password')
+  div.control-group
+    label.control-label(for='new-password-2') New password (again)
+    div.controls
+      input#new-password-2(type='password', name='new-password-2')
+  div.form-actions
+   button.btn.btn-primary(type='submit') Send
+

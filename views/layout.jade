@@ -1,0 +1,40 @@
+!!! 5
+html
+  head
+    title torrent manager
+    link(href='/css/bootstrap.css', media='screen', rel='stylesheet', type='text/css')
+    link(href='/css/main.css', media='screen', rel='stylesheet', type='text/css')
+    //script(src='/socket.io/socket.io.js')
+  body
+    div.navbar.navbar-fixed-top
+      div.navbar-inner
+        div.container
+          a.btn.btn-navbar(ata-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='/') Torrent Manager
+          div.nav-collapse
+            ul.nav
+              li
+                a(href='/') Index
+              li
+                a(href='/about') About
+              li
+                a(href='/contact') Contact
+              - if (user && user.id)
+                li
+                  a(href='/user') Admin
+                li
+                  a(href='/logout') Disconnection
+    div.container
+      h1= title
+      - if (flash.error !== undefined)
+        div
+         each err in flash.error
+            div.label.label-important= err
+      - if(flash.success != undefined)
+        div
+          each success in flash.success
+           div.label.label-success= success
+      div!= body

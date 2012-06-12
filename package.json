@@ -1,0 +1,31 @@
+{
+    "author": "Daroth <daroth@braindead.fr> (http://braindead.fr/)",
+    "name": "torrent-manager",
+    "description": "A web torrent manager based on node and rtorrent",
+    "version": "0.0.0",
+    "homepage": "http://braindead.fr/",
+    "dependencies": {
+        "express": "2.5.x",
+        "passport": "0.1.x",
+        "passport-local": "0.1.x",
+        "jade": "0.26.x",
+        "stylus": "0.27.x",
+        "express-form": "0.6.x",
+        "nt": "0.2.x",
+        "socket.io": "0.9.x",
+        "cradle": "0.6.x",
+        "security-lib": "0.0.x",
+        "node-zip": "0.0.1",
+        "nconf": "0.2.x"
+    },
+    "devDependencies": {
+        "vows": "0.6.2"
+    },
+    "optionalDependencies": {},
+    "engines": {
+        "node": "0.6.x"
+    },
+    "scripts": {
+        "start": "node app.js"
+    }
+}
