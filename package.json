@@ -16,7 +16,7 @@
         "cradle": "0.6.x",
         "security-lib": "0.0.x",
         "node-zip": "0.0.1",
-        "nconf": "0.2.x"
+        "nconf": "0.6.x"
     },
     "devDependencies": {
         "vows": "0.6.2"
