@@ -1,0 +1,18 @@
+table.table.table-striped
+	tr
+		th="Title"
+		th="Progression"
+		th="Size"
+		th="Ratio"
+
+	- each download in downloading
+		tr
+			td
+				a(href=download.url)=download.name
+				- each file in download.contains
+					p="=> " + file.name
+			td
+				.progress
+					.bar(style="width: " + download.percentage + "%")
+			td=download.size
+			td="1"

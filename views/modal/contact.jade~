@@ -1,0 +1,9 @@
+#modal_contact.modal.hide
+	//.modal-header
+	//	a.close(data-dismiss='modal') ×
+	//	h3="Contact"
+	.modal-body        
+		p="If you got any problem, contact :"
+		a(href='mailto:daroth@braindead.fr')="daroth@braindead.fr"
+	//.modal-footer
+	//	a.btn(href='#', data-dismiss='modal') Close

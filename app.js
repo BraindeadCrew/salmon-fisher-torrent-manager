@@ -116,16 +116,74 @@ var torrent_manager = function () {
         });
         
         app.post('/user', ensureAuthenticated, function (req, res) {
-            login.updateUserPassword(req.user, req.body['old-password'], req.body['new-password'], 
+            login.updateUserPassword(req.user, req.body['old-password'], req.body['new-password'],
                 req.body['new-password-2'], function (err) {
                 if (err !== undefined && err !== null) {
                     req.flash('error', err.message);
                 } else {
-                    req.flash('success', 'Password updated.');   
+                    req.flash('success', 'Password updated.');
                 }
                     
-                res.redirect('/user');   
-            }); 
+                res.redirect('/user');
+            });
+        });
+
+        app.get('/test/main', function (req, res) {
+            res.render('main.jade', {
+                title: 'Main',
+                username: '',
+		downloading:
+		[
+			{
+			name : 'qsdqsd',
+			url : 'sdfsdfsdfsff',
+			percentage : '85',
+			ratio : '1',
+			size : '452452',
+			contains : []
+			},
+			{
+			name : 'qsdq4sd',
+			url : 'sdfsdfsdfsff',
+			percentage : '46',
+			ratio : '1',
+			size : '452452',
+			contains : []
+			},
+			{
+			name : 'qsdq454sd',
+			url : 'sdfsdfsdfsff',
+			percentage : '7',
+			ratio : '1',
+			size : '452452',
+			contains : []
+			},
+			{
+			name : 'qs454545dqsd',
+			url : 'sdfsdfsdfsff',
+			percentage : '74',
+			ratio : '1',
+			size : '452452',
+			contains : []
+			},
+			{
+			name : 'qsd245245qsd',
+			url : 'sdfsdfsdfsff',
+			percentage : '45',
+			ratio : '1',
+			size : '452452',
+			contains : []
+			},
+			{
+			name : 'qsd785785qsd',
+			url : 'sdfsdfsdfsff',
+			percentage : '1',
+			ratio : '1',
+			size : '452452',
+			contains : []
+			}
+		]
+            });
         });
 
 

@@ -1,0 +1,8 @@
+#modal_about.modal.hide
+	.modal-header
+		a.close(data-dismiss='modal') ×
+		h3="About"
+	.modal-body        
+		p="Developped by Braindead Crou v0.0"
+	.modal-footer
+		a.btn(href='#', data-dismiss='modal') Close
