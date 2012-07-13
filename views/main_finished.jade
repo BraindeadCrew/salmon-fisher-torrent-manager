@@ -1,0 +1,25 @@
+table.table.table-striped
+	tr
+		th="Title"
+		th="Size"
+		th="Ratio"
+		th
+
+	- each file in finished
+		tr
+			td
+				- each tag in file.tags
+					span.label=tag
+					span=" "
+				a(href="file.url")=file.name
+			
+			td=file.size
+			td
+				- if(file.ratio>1)
+					span.label.label-success=file.ratio
+				- else if(file.ratio>0.75)
+					span.label.label-warning=file.ratio
+				- else
+					span.label.label-important=file.ratio
+			td
+				i.icon-trash
