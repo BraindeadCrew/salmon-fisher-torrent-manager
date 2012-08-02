@@ -1,0 +1,82 @@
+- if(typeof(filter) != 'undefined')
+	p
+		- if (filter.show_finished)
+			span.label.label-success="finished"
+		- else
+			span.label.label-important="finished"
+		
+		span=" "
+		
+		- if (filter.show_paused)
+			span.label.label-success="paused"
+		- else
+			span.label.label-important="paused"
+			
+		span=" "
+		
+		- if (filter.show_current)
+			span.label.label-success="current"
+		- else
+			span.label.label-important="current"
+	
+table.table.table-striped
+	tr
+		th="Title"
+		th="Progression"
+		th="Size"
+		th
+		th="Ratio"
+
+	- each torrent in torrents
+		- var displayed
+		- if(typeof(filter) != 'undefined')
+			- displayed=false
+			
+			- if (filter.show_finished && torrent.percentage=='100') displayed=true
+			- else if (torrent.percentage!='100' && filter.show_paused && !torrent.active) displayed=true
+			- else if (torrent.percentage!='100' && filter.show_current && torrent.active) displayed=true
+			
+			
+			- each tag_filter in filter.tag_filters
+				- each required_tag in tag_filter
+					- each current_tag in torrent.tags
+						- if (current_tag!=required_tag) displayed=false
+			
+		- else displayed=true
+		
+		- if(displayed)
+			tr
+				td
+					- each tag in torrent.tags
+						span.label=tag
+						span=" "
+					-if(torrent.percentage!='100')
+						span=torrent.name
+					-else
+						a(href=torrent.url)=torrent.name
+				td
+					-if(torrent.percentage=='100')
+						.progress
+							.bar(style="width: " + torrent.percentage + "%")
+					-else
+						- if(torrent.active)
+							.progress.progress-striped.active
+								.bar(style="width: " + torrent.percentage + "%")
+						- else
+							.progress.progress-striped
+								.bar(style="width: " + torrent.percentage + "%")
+				td=torrent.size
+				td
+					- if(torrent.active)
+						i.icon-pause
+					- else
+						i.icon-play
+					span=" "
+					i.icon-remove
+				td
+					- if(torrent.ratio>1)
+						span.label.label-success=torrent.ratio
+					- else if(torrent.ratio>0.75)
+						span.label.label-warning=torrent.ratio
+					- else
+						span.label.label-important=torrent.ratio

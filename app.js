@@ -132,115 +132,113 @@ var torrent_manager = function () {
             res.render('main.jade', {
                 title: 'Main',
                 username: '',
-			downloading:
-			[
-				{
-				name : 'bootstrap',
-				tags : ['Developpement'],
-				percentage : '85',
-				active : true,
-				ratio : '1',
-				size : '4552',
-				contains : []
-				},
-				{
-				name : 'Die Antwoord - Tens$ion',
-				tags : ['Musique'],
-				percentage : '46',
-				active : true,
-				ratio : '1',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'Filmographie Jean Paul Rouve',
-				tags : ['Films','Video'],
-				percentage : '7',
-				active : false,
-				ratio : '1',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'qs454545dqsd',
-				tags : ['Serie','Video'],
-				percentage : '74',
-				active : true,
-				ratio : '1',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'qsd245245qsd',
-				tags : ['test','sfsdf'],
-				percentage : '45',
-				active : false,
-				ratio : '1',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'qsd785785qsd',
-				tags : ['test'],
-				percentage : '1',
-				active : false,
-				ratio : '1',
-				size : '452452',
-				contains : []
-				}
-			],
-			finished:
-			[
-				{
-				name : 'bootstrap',
-				url : '',
-				tags : ['Developpement'],
-				ratio : '0.12',
-				size : '4552',
-				contains : []
-				},
-				{
-				name : 'Die Antwoord - Tens$ion',
-				url : '',
-				tags : ['Musique'],
-				ratio : '0.62',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'Filmographie Jean Paul Rouve',
-				url : 'sdfsdfsdfsff',
-				tags : ['Films','Video'],
-				ratio : '0.86',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'qs454545dqsd',
-				url : 'sdfsdfsdfsff',
-				tags : ['Serie','Video'],
-				ratio : '2.01',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'qsd245245qsd',
-				url : 'sdfsdfsdfsff',
-				tags : ['test','sfsdf'],
-				ratio : '1.62',
-				size : '452452',
-				contains : []
-				},
-				{
-				name : 'qsd785785qsd',
-				url : 'sdfsdfsdfsff',
-				tags : ['test'],
-				ratio : '0.95',
-				size : '452452',
-				contains : []
-				}
-			]
-
+				torrents:
+				[
+					{
+					name : 'bootstrap',
+					tags : ['Developpement'],
+					percentage : '85',
+					url : '',
+					active : true,
+					ratio : '1',
+					size : '4552',
+					contains : []
+					},
+					{
+					name : 'Die Antwoord - Tens$ion',
+					tags : ['Musique'],
+					url : '',
+					percentage : '46',
+					active : true,
+					ratio : '1',
+					size : '452452',
+					contains : []
+					},
+					{
+					name : 'Filmographie Jean Paul Rouve',
+					tags : ['Films','Video'],
+					url : '',
+					percentage : '7',
+					active : false,
+					ratio : '1',
+					size : '452452',
+					contains : []
+					},
+					{
+					name : 'qs454545dqsd',
+					tags : ['Serie','Video'],
+					url : '',
+					percentage : '74',
+					active : true,
+					ratio : '1',
+					size : '452452',
+					contains : []
+					},
+					{
+					name : 'qsd245245qsd',
+					tags : ['test','sfsdf'],
+					url : '',
+					percentage : '45',
+					active : false,
+					ratio : '1',
+					size : '452452',
+					contains : []
+					},
+					{
+					name : 'qsd785785qsd',
+					tags : ['test'],
+					url : '',
+					percentage : '1',
+					active : false,
+					ratio : '1',
+					size : '452452',
+					contains : []
+					},
+					{
+					name : 'HEY OH',
+					tags : ['test'],
+					url : '',
+					percentage : '100',
+					active : false,
+					ratio : '2.01',
+					size : '452452',
+					contains : []
+					}
+				],
+				filters:[
+					{
+						name:'tags',
+						show_finished:true,
+						show_current:true,
+						show_paused:true,
+						tag_filters:[
+							['video','serie'],
+							['musique']
+						]
+					},
+					{
+						name:'finished',
+						show_finished:true,
+						show_current:false,
+						show_paused:false,
+						tag_filters:[]
+					},
+					{
+						name:'current',
+						show_finished:false,
+						show_current:true,
+						show_paused:false,
+						tag_filters:[]
+					},
+					{
+						name:'paused',
+						show_finished:false,
+						show_current:false,
+						show_paused:true,
+						tag_filters:[]
+					}
+				]
+				
             });
         });
 
