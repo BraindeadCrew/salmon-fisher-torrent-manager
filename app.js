@@ -46,9 +46,8 @@ var torrent_manager = function () {
         });
 
         app.get('/', ensureAuthenticated, function (req, res) {
-            var finished, downloading;
-            finished = files.finished();
-            downloading = files.downloading();
+            var finished = files.finished(),
+                downloading = files.downloading();
             res.render('index.jade', {
                 title: 'Index',
                 finished: finished,
@@ -70,7 +69,6 @@ var torrent_manager = function () {
 
         app.post('/', ensureAuthenticated, function (req, res, next) {
             var file = req.files['torrent-file'];
-
             nt.read(file.path, function (err, torrent) {
                 if (err) {
                     req.flash('error', 'Upload failed, %s is not a valid .torrent file.', file.name);
@@ -82,7 +80,7 @@ var torrent_manager = function () {
                     util.pump(is, os, function () {
                         fs.unlinkSync(src);
                     });
-                    req.flash('success', 'Upload succeded');
+                    req.flash('success', 'Upload succeeded');
                 }
                 res.redirect('/');
             });

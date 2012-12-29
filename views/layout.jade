@@ -11,7 +11,7 @@ html
 		title=siteName
 		link(href='/css/bootstrap.css', media='screen', rel='stylesheet', type='text/css')
 		link(href='/css/main.css', media='screen', rel='stylesheet', type='text/css')
-		//script(src='/socket.io/socket.io.js')
+
 	body
 	div.navbar.navbar-fixed-top
 		div.navbar-inner
@@ -28,12 +28,13 @@ html
 							li
 								a(href='/user')=menu_admin
 							li
-								a(href='/logout')=menu_logout
+								a(data-toggle='modal', href='#modal_logout')=menu_logout
 
 	div!= body
 
 include modal/about.jade
 include modal/contact.jade
+include modal/logout.jade
 
 script(type="text/javascript", src='/js/jquery-1.7.2.min.js')
 script(type="text/javascript", src='/js/bootstrap.js')
