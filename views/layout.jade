@@ -1,6 +1,7 @@
 !!! 5
 
 - siteName = "Salmon Fisher Torrent Manager"
+- menu_index = "Index"
 - menu_about = "About"
 - menu_contact = "Contact"
 - menu_admin = "Admin"
@@ -20,6 +21,8 @@ html
 					a.brand(href='/')=siteName
 				div.nav-collapse
 					ul.nav
+						li
+							a(href='/')=menu_index
 						li
 							a(data-toggle='modal', href='#modal_about')=menu_about
 						li
