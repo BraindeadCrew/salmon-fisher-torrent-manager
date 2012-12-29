@@ -48,13 +48,10 @@ var torrent_manager = function () {
   app.get('/', ensureAuthenticated, function (req, res) {
 	var finished = files.finished(),
 	downloading = files.downloading();
-//	res.render('index.jade', {
-//	  title: 'Index',
-//	  finished: finished,
-//	  downloading: downloading
-//	});
+	
 	res.render('main.jade', {
-	  torrents: files.finished(),
+	  finished: finished,
+	  downloading: downloading,
 	  filters: []
 	});
   });

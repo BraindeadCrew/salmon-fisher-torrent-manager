@@ -1,25 +1,17 @@
-table.table.table-striped
-	tr
-		th="Title"
-		th="Size"
-		th="Ratio"
-		th
-
-	- each file in finished
+- if (finished.length)
+	table.table.table-striped
 		tr
-			td
-				- each tag in file.tags
-					span.label=tag
-					span=" "
-				a(href="file.url")=file.name
-			
-			td=file.size
-			td
-				- if(file.ratio>1)
-					span.label.label-success=file.ratio
-				- else if(file.ratio>0.75)
-					span.label.label-warning=file.ratio
-				- else
-					span.label.label-important=file.ratio
-			td
-				i.icon-trash
+			th Title
+			th Progression
+			th Size
+			th Ratio
+	
+		- each torrent in finished
+			tr
+				td
+					a(href='files/' + torrent.webpath) #{torrent.webpath}
+				td -
+				td #{torrent.stats.size / 1024 / 1024}M
+				td -
+- else
+	p There is no torrent for now

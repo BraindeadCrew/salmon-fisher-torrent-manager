@@ -1,40 +1,20 @@
-- if(typeof(filter) != 'undefined')
-	p
-		- if (filter.show_finished)
-			span.label.label-success="finished"
-		- else
-			span.label.label-important="finished"
-		
-		span=" "
-		
-		- if (filter.show_paused)
-			span.label.label-success="paused"
-		- else
-			span.label.label-important="paused"
-			
-		span=" "
-		
-		- if (filter.show_current)
-			span.label.label-success="current"
-		- else
-			span.label.label-important="current"
-	
 - if (torrents.length)
 	table.table.table-striped
 		tr
-			th="Title"
-			th="Progression"
-			th="Size"
-			th
-			th="Ratio"
+			th Title
+			th Progression
+			th Size
+			th Ratio
 	
 		- each torrent in torrents
 			tr
-				td
-					a(href='files/' + torrent.webpath) #{torrent.webpath}
+				- if (torrent.isFinished)
+					td
+						a(href='files/' + torrent.webpath) #{torrent.webpath}
+				- else
+					td #{torrent.webpath}
 				td -
 				td #{torrent.stats.size / 1024 / 1024}M
-				td -
 				td -
 - else
 	p There is no torrent for now

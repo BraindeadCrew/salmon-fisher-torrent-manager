@@ -1,38 +1,16 @@
-table.table.table-striped
-	tr
-		th="Title"
-		th="Progression"
-		th="Size"
-		th
-		th="Ratio"
-
-	- each download in torrents
+- if (downloading.length)
+	table.table.table-striped
 		tr
-			td
-				- each tag in download.tags
-					span.label=tag
-					span=" "
-				span=download.name
-			td
-				- if(download.active)
-					.progress.progress-striped.active
-						.bar(style="width: " + download.percentage + "%")
-				- else
-					.progress
-						.bar(style="width: " + download.percentage + "%")
-			td=download.size
-			td
-				- if(download.active)
-					i.icon-pause
-				- else
-					i.icon-play
-				span=" "
-				i.icon-remove
-			td
-				- if(download.ratio>1)
-					span.label.label-success=download.ratio
-				- else if(download.ratio>0.75)
-					span.label.label-warning=download.ratio
-				- else
-					span.label.label-important=download.ratio
-					
+			th Title
+			th Progression
+			th Size
+			th Ratio
+	
+		- each torrent in downloading
+			tr
+				td #{torrent.webpath}
+				td -
+				td #{torrent.stats.size / 1024 / 1024}M
+				td -
+- else
+	p There is no torrent for now

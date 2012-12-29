@@ -1,3 +1,5 @@
+- var torrents = finished.concat(downloading)
+
 .container-fluid
 	.row-fluid
 		.span3
@@ -7,16 +9,17 @@
 			ul.nav.nav-tabs
 				li.active
 					a(data-toggle="tab",href="#main_all") All (#{torrents.length})
-				- each filter in filters
-					li
-						a(data-toggle="tab",href="#main_" + filter.name)=filter.name
-				//- li
-				//-	a(onclick="alert('New')")="+"
+				li
+					a(data-toggle="tab",href="#main_downloading") Downloading (#{downloading.length})
+				li
+					a(data-toggle="tab",href="#main_finished") Finished (#{finished.length})
 
 			.tab-content
 				#main_all.tab-pane.active
 					include ./filtered_list.jade
 					
-				- each filter in filters
-					.tab-pane(id="main_"+filter.name)
-						include ./filtered_list.jade
+				.tab-pane(id="main_downloading")
+					include ./main_downloading.jade
+
+				.tab-pane(id="main_finished")
+					include ./main_finished.jade
