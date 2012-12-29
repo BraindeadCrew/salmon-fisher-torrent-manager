@@ -14,3 +14,4 @@ node_modules
 npm-shrinkwrap.json
 npm-debug.log
 config.json
+public/files/*
