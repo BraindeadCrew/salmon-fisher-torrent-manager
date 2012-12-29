@@ -11,8 +11,8 @@ form.form-horizontal(method='post', enctype='multipart/form-data')
     each file in finished
       div.file
       - if(file.isFile)
-           #{file.name} 
-           a(href='files/' + file.webpath) télécharger
+           #{file.webpath} 
+           a(href='files/' + file.webpath) #{file.webpath}
            div.size #{file.stats.size / 1024 / 1024}M
        -else
            a(href='f/' + file.webpath) #{file.name}   

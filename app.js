@@ -48,10 +48,14 @@ var torrent_manager = function () {
   app.get('/', ensureAuthenticated, function (req, res) {
 	var finished = files.finished(),
 	downloading = files.downloading();
-	res.render('index.jade', {
-	  title: 'Index',
-	  finished: finished,
-	  downloading: downloading
+//	res.render('index.jade', {
+//	  title: 'Index',
+//	  finished: finished,
+//	  downloading: downloading
+//	});
+	res.render('main.jade', {
+	  torrents: files.finished(),
+	  filters: []
 	});
   });
 
@@ -207,32 +211,32 @@ var torrent_manager = function () {
 	  }
 	  ],
 	  filters:[
+//	  {
+//		name:'tags',
+//		show_finished:true,
+//		show_current:true,
+//		show_paused:true,
+//		tag_filters:[
+//		['video','serie'],
+//		['musique']
+//		]
+//	  },
 	  {
-		name:'tags',
-		show_finished:true,
-		show_current:true,
-		show_paused:true,
-		tag_filters:[
-		['video','serie'],
-		['musique']
-		]
-	  },
-	  {
-		name:'finished',
+		name:'Finished',
 		show_finished:true,
 		show_current:false,
 		show_paused:false,
 		tag_filters:[]
 	  },
 	  {
-		name:'current',
+		name:'Current',
 		show_finished:false,
 		show_current:true,
 		show_paused:false,
 		tag_filters:[]
 	  },
 	  {
-		name:'paused',
+		name:'Paused',
 		show_finished:false,
 		show_current:false,
 		show_paused:true,

@@ -2,16 +2,16 @@
 	.row-fluid
 		.span3
 			include ./uploadTorrent.jade
+
 		.span9
-			
 			ul.nav.nav-tabs
 				li.active
-					a(data-toggle="tab",href="#main_all")="All"
+					a(data-toggle="tab",href="#main_all") All (#{torrents.length})
 				- each filter in filters
 					li
 						a(data-toggle="tab",href="#main_" + filter.name)=filter.name
-				li
-					a(onclick="alert('New')")="+"
+				//- li
+				//-	a(onclick="alert('New')")="+"
 
 			.tab-content
 				#main_all.tab-pane.active
