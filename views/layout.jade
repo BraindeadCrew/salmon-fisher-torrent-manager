@@ -34,7 +34,8 @@ html
 
 include modal/about.jade
 include modal/contact.jade
-include modal/logout.jade
+- if (user && user.id)
+	include modal/logout.jade
 
 script(type="text/javascript", src='/js/jquery-1.7.2.min.js')
 script(type="text/javascript", src='/js/bootstrap.js')
