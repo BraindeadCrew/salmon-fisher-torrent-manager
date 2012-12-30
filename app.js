@@ -12,7 +12,8 @@ var torrent_manager = function () {
   login = require('./lib/login'),
   params = require('./lib/params'),
   ensureAuthenticated = login.ensureAuthenticated,
-  files = require('./lib/files');
+  files = require('./lib/files'),
+  path = require('path');
 
   function compile(str, path) {
 	return stylus(str).set('filename', path).set('compress', true).set('force', true);
@@ -47,8 +48,8 @@ var torrent_manager = function () {
 
   app.get('/', ensureAuthenticated, function (req, res) {
 	var finished = files.finished(),
-	downloading = files.downloading();
-	
+	    downloading = files.downloading();
+
 	res.render('main.jade', {
 	  finished: finished,
 	  downloading: downloading,
@@ -74,8 +75,9 @@ var torrent_manager = function () {
 	  if (err) {
 		req.flash('error', 'Upload failed, %s is not a valid .torrent file.', file.name);
 	  } else {
+                console.log(params.getParam('folder:uploadedTorrent'));
 		var src = file.path,
-		dest = __dirname + '/torrents/' + file.name,
+		dest = path.join(params.getParam('folder:uploadedTorrent'), file.name),
 		is = fs.createReadStream(src),
 		os = fs.createWriteStream(dest);
 		util.pump(is, os, function () {
