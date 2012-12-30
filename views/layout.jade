@@ -8,37 +8,48 @@
 - menu_logout = "Logout"
 
 html
-	head
-		title=siteName
-		link(href='/css/bootstrap.css', media='screen', rel='stylesheet', type='text/css')
-		link(href='/css/main.css', media='screen', rel='stylesheet', type='text/css')
+        head
+                title=siteName
+                link(href='/css/bootstrap.css', media='screen', rel='stylesheet', type='text/css')
+                link(href='/css/main.css', media='screen', rel='stylesheet', type='text/css')
 
-	body
-	div.navbar.navbar-fixed-top
-		div.navbar-inner
-			div.container
-				a.btn.btn-navbar(ata-toggle='collapse', data-target='.nav-collapse')
-					a.brand(href='/')=siteName
-				div.nav-collapse
-					ul.nav
-						li
-							a(href='/')=menu_index
-						li
-							a(data-toggle='modal', href='#modal_about')=menu_about
-						li
-							a(data-toggle='modal', href='#modal_contact')=menu_contact
-						- if (user && user.id)
-							li
-								a(href='/user')=menu_admin
-							li
-								a(data-toggle='modal', href='#modal_logout')=menu_logout
+        body
+        div.navbar.navbar-fixed-top
+                div.navbar-inner
+                        div.container
+                                a.btn.btn-navbar(ata-toggle='collapse', data-target='.nav-collapse')
+                                        a.brand(href='/')=siteName
+                                div.nav-collapse
+                                        ul.nav
+                                                li
+                                                        a(href='/')=menu_index
+                                                li
+                                                        a(data-toggle='modal', href='#modal_about')=menu_about
+                                                li
+                                                        a(data-toggle='modal', href='#modal_contact')=menu_contact
+                                                - if (user && user.id)
+                                                        li
+                                                                a(href='/user')=menu_admin
+                                                        li
+                                                                a(data-toggle='modal', href='#modal_logout')=menu_logout
 
-	div!= body
+        - if (flash.error !== undefined)
+          div
+           each err in flash.error
+              div.label.label-important= err
+           br
+        - if(flash.success != undefined)
+          div
+            each success in flash.success
+             div.label.label-success= success
+            br
+
+        div!= body
 
 include modal/about.jade
 include modal/contact.jade
 - if (user && user.id)
-	include modal/logout.jade
+        include modal/logout.jade
 
 script(type="text/javascript", src='/js/jquery-1.7.2.min.js')
 script(type="text/javascript", src='/js/bootstrap.js')
