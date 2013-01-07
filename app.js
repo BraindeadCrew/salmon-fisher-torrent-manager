@@ -56,6 +56,12 @@ var torrent_manager = function () {
 	  filters: []
 	});
   });
+  
+  app.get('/api/', ensureAuthenticated, function(req, res) {
+    var finished = files.finished(),
+	downloading = files.downloading();
+    res.json({ finished: finished, downloading: downloading });
+  });
 
   app.get('/contact', function (req, res) {
 	res.render('contact.jade', {
